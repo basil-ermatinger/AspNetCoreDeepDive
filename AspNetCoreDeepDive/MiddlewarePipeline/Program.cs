@@ -12,13 +12,9 @@ app.Use(async (HttpContext context, RequestDelegate next) =>
 });
 
 // Middleware #2
-app.Use(async (HttpContext context, RequestDelegate next) =>
+app.Run(async (context) =>
 {
-	await context.Response.WriteAsync("Middleware #2: Before calling next\r\n");
-
-	//await next(context);
-
-	await context.Response.WriteAsync("Middleware #2: After calling next\r\n");
+	await context.Response.WriteAsync("Middleware #2: Processed\r\n");
 });
 
 // Middleware #3
