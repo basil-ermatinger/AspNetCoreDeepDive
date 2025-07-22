@@ -11,10 +11,37 @@ app.Use(async (HttpContext context, RequestDelegate next) =>
 	await context.Response.WriteAsync("Middleware #1: After calling next\r\n");
 });
 
-// Middleware #2
-app.Run(async (context) =>
+app.Map("/employees", (appBuilder) =>
 {
-	await context.Response.WriteAsync("Middleware #2: Processed\r\n");
+	// Middleware #5
+	appBuilder.Use(async (HttpContext context, RequestDelegate next) =>
+	{
+		await context.Response.WriteAsync("Middleware #5: Before calling next\r\n");
+
+		await next(context);
+
+		await context.Response.WriteAsync("Middleware #5: After calling next\r\n");
+	});
+
+	// Middleware #6
+	appBuilder.Use(async (HttpContext context, RequestDelegate next) =>
+	{
+		await context.Response.WriteAsync("Middleware #6: Before calling next\r\n");
+
+		await next(context);
+
+		await context.Response.WriteAsync("Middleware #6: After calling next\r\n");
+	});
+});
+
+// Middleware #2
+app.Use(async (HttpContext context, RequestDelegate next) =>
+{
+	await context.Response.WriteAsync("Middleware #2: Before calling next\r\n");
+
+	await next(context);
+
+	await context.Response.WriteAsync("Middleware #2: After calling next\r\n");
 });
 
 // Middleware #3
