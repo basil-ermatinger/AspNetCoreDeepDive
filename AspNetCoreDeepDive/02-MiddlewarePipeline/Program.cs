@@ -34,6 +34,35 @@ app.Map("/employees", (appBuilder) =>
 	});
 });
 
+app.MapWhen((context) =>
+	{
+		return context.Request.Path.StartsWithSegments("/employee")
+			&& context.Request.Query.ContainsKey("id");
+	},
+	(appBuilder) =>
+	{
+		// Middleware #7
+		appBuilder.Use(async (HttpContext context, RequestDelegate next) =>
+		{
+			await context.Response.WriteAsync("Middleware #7: Before calling next\r\n");
+
+			await next(context);
+
+			await context.Response.WriteAsync("Middleware #7: After calling next\r\n");
+		});
+
+		// Middleware #8
+		appBuilder.Use(async (HttpContext context, RequestDelegate next) =>
+		{
+			await context.Response.WriteAsync("Middleware #8: Before calling next\r\n");
+
+			await next(context);
+
+			await context.Response.WriteAsync("Middleware #8: After calling next\r\n");
+		});
+	}
+);
+
 // Middleware #2
 app.Use(async (HttpContext context, RequestDelegate next) =>
 {
