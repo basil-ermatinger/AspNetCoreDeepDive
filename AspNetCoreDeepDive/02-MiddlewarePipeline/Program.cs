@@ -4,6 +4,7 @@ var app = builder.Build();
 // Middleware #1
 app.Use(async (HttpContext context, RequestDelegate next) =>
 {
+	context.Response.Headers["MyHeader"] = "My header content";
 	await context.Response.WriteAsync("Middleware #1: Before calling next\r\n");
 
 	await next(context);
