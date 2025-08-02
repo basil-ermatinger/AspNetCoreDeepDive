@@ -1,24 +1,39 @@
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-app.MapGet("/employees", async (HttpContext context) =>
+app.Use(async (context, next) =>
 {
-	await context.Response.WriteAsync("Get employees");
+	await next(context);
 });
 
-app.MapPost("/employees", async (HttpContext context) =>
+app.UseRouting();
+
+app.Use(async (context, next) =>
 {
-	await context.Response.WriteAsync("Create an employee");
+	await next(context);
 });
 
-app.MapPut("/employees", async (HttpContext context) =>
+app.UseEndpoints(endpoints =>
 {
-	await context.Response.WriteAsync("Update an employee");
-});
+	endpoints.MapGet("/employees", async (HttpContext context) =>
+	{
+		await context.Response.WriteAsync("Get employees");
+	});
 
-app.MapDelete("/employees", async (HttpContext context) =>
-{
-	await context.Response.WriteAsync("Delete an employee");
+	endpoints.MapPost("/employees", async (HttpContext context) =>
+	{
+		await context.Response.WriteAsync("Create an employee");
+	});
+
+	endpoints.MapPut("/employees", async (HttpContext context) =>
+	{
+		await context.Response.WriteAsync("Update an employee");
+	});
+
+	endpoints.MapDelete("/employees", async (HttpContext context) =>
+	{
+		await context.Response.WriteAsync("Delete an employee");
+	});
 });
 
 app.Run();
