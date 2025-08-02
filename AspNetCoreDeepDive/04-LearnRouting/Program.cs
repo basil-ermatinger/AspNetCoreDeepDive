@@ -1,16 +1,18 @@
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
+// Just for debugging
 app.Use(async (context, next) =>
 {
-	await next(context);
+	await next(context); // context.Endpoint is null
 });
 
 app.UseRouting();
 
+// Just for debugging
 app.Use(async (context, next) =>
 {
-	await next(context);
+	await next(context); // context.Endpoint is set
 });
 
 app.UseEndpoints(endpoints =>
