@@ -22,6 +22,21 @@ app.UseEndpoints(endpoints =>
 		await context.Response.WriteAsync("Get employees");
 	});
 
+	endpoints.MapGet("/employees/{id:int:range(1,5)}", async (HttpContext context) =>
+	{
+		await context.Response.WriteAsync($"Get employee by id smaller than 6: {context.Request.RouteValues["id"]}");
+	});
+
+	endpoints.MapGet("/employees/{name:alpha:minlength(1):maxlength(4)}", async (HttpContext context) =>
+	{
+		await context.Response.WriteAsync($"Get employee by string with 1 to 4 chars: {context.Request.RouteValues["name"]}");
+	});
+
+	endpoints.MapGet("/employees/{name:minlength(5)}", async (HttpContext context) =>
+	{
+		await context.Response.WriteAsync($"Get employee by string with 5 or more chars: {context.Request.RouteValues["name"]}");
+	});
+
 	endpoints.MapPost("/employees", async (HttpContext context) =>
 	{
 		await context.Response.WriteAsync("Create an employee");
