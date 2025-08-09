@@ -1,4 +1,11 @@
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddRouting(options =>
+{
+	options.ConstraintMap.Add("pos", typeof(PositionConstraint));
+});
+
 var app = builder.Build();
 
 // Just for debugging
@@ -37,6 +44,11 @@ app.UseEndpoints(endpoints =>
 		await context.Response.WriteAsync($"Get employee by string with 5 or more chars: {context.Request.RouteValues["name"]}");
 	});
 
+	endpoints.MapGet("/employees/positions/{position:pos}", async (HttpContext context) =>
+	{
+		await context.Response.WriteAsync($"Get employees under position: {context.Request.RouteValues["position"]}");
+	});
+
 	endpoints.MapPost("/employees", async (HttpContext context) =>
 	{
 		await context.Response.WriteAsync("Create an employee");
@@ -67,3 +79,26 @@ app.UseEndpoints(endpoints =>
 });
 
 app.Run();
+
+class PositionConstraint : IRouteConstraint
+{
+	public bool Match(HttpContext? httpContext, IRouter? route, string routeKey, RouteValueDictionary values, RouteDirection routeDirection)
+	{
+		if(!values.ContainsKey(routeKey))
+		{
+			return false;
+		}
+
+		if(values[routeKey] is null)
+		{
+			return false;
+		}
+
+		if(values[routeKey].ToString().Equals("manager", StringComparison.OrdinalIgnoreCase) || values[routeKey].ToString().Equals("developer", StringComparison.OrdinalIgnoreCase))
+		{
+			return true;
+		}
+
+		return false;
+	}
+}
