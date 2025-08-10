@@ -9,6 +9,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-MiddlewarePipeline", "02
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-CustomMiddlewareClass", "03-CustomMiddlewareClass\03-CustomMiddlewareClass.csproj", "{38E69C77-F4E4-4A1F-BA81-D22426FC0313}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-LearnRouting", "04-LearnRouting\04-LearnRouting.csproj", "{4535879E-EFB1-4368-9DAE-57635F8BC2A1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment-04-RoutingWithCrud", "Assignment-04-RoutingWithCrud\Assignment-04-RoutingWithCrud.csproj", "{103B34C8-C844-48E1-B81A-427622C8C8EC}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +31,14 @@ Global
 		{38E69C77-F4E4-4A1F-BA81-D22426FC0313}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38E69C77-F4E4-4A1F-BA81-D22426FC0313}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38E69C77-F4E4-4A1F-BA81-D22426FC0313}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4535879E-EFB1-4368-9DAE-57635F8BC2A1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4535879E-EFB1-4368-9DAE-57635F8BC2A1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4535879E-EFB1-4368-9DAE-57635F8BC2A1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4535879E-EFB1-4368-9DAE-57635F8BC2A1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{103B34C8-C844-48E1-B81A-427622C8C8EC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{103B34C8-C844-48E1-B81A-427622C8C8EC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{103B34C8-C844-48E1-B81A-427622C8C8EC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{103B34C8-C844-48E1-B81A-427622C8C8EC}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
