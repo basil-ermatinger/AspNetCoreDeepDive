@@ -1,4 +1,5 @@
 using _05_MinimalApi_ModelBindingModelValidation.Modules.Employees.Handlers;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -11,24 +12,19 @@ app.MapPost("/employees", async (HttpContext context) =>
 	await EmployeeRequestHandler.HandlePost(context);
 });
 
-app.MapGet("/employees", async (HttpContext context) =>
+//app.MapGet("/employees", async (HttpContext context) =>
+//{
+//	await EmployeeRequestHandler.HandleGetEmployees(context);
+//});
+
+app.MapGet("/employees/{id:int?}", async ([FromRoute] int? id) =>
 {
-	await EmployeeRequestHandler.HandleGetEmployees(context);
+	return id.HasValue ? EmployeeRequestHandler.HandleGetEmployeeById(id.Value) : null;
 });
 
-app.MapGet("/employees/{id:int}", (int id) =>
+app.MapGet("/employees/position/{id}", async ([FromRoute (Name = "id")] int identityNumber) =>
 {
-	//
-});
-
-app.MapGet("/employees/{id:int}", async (HttpContext context) =>
-{
-	await EmployeeRequestHandler.HandleGetEmployeeById(context);
-});
-
-app.MapGet("/employees/position/{id}", async (HttpContext context) =>
-{
-	await EmployeeRequestHandler.HandleGetPositionById(context);
+	return EmployeeRequestHandler.HandleGetPositionById(identityNumber);
 });
 
 app.MapGet("/employees/salary/{id}", async (HttpContext context) =>
