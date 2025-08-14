@@ -34,21 +34,9 @@ namespace _05_MinimalApi_ModelBindingModelValidation.Modules.Employees.Handlers
 			}
 		}
 
-		public static async Task HandleGetEmployees(HttpContext context)
+		public static Employee? HandleGetEmployees(int id)
 		{
-			context.Response.ContentType = "text/html";
-
-			List<Employee> employees = EmployeeRepository.GetEmployees();
-
-			await context.Response.WriteAsync("<ul>");
-
-			foreach(Employee employee in employees)
-			{
-				await context.Response.WriteAsync(
-					$"<li><b>{employee.Name}</b>: {employee.Position}</li>");
-			}
-
-			await context.Response.WriteAsync("</ul>");
+			return HandleGetEmployeeById(id);
 		}
 
 		public static Employee? HandleGetEmployeeById(int id)
@@ -61,23 +49,19 @@ namespace _05_MinimalApi_ModelBindingModelValidation.Modules.Employees.Handlers
 			return EmployeeRepository.GetEmployee(identityNumber)?.Position;
 		}
 
-		public static async Task HandleGetSalaryById(HttpContext context)
+		public static double? HandleGetSalaryById(int id)
 		{
-			context.Response.ContentType = "text/html";
+			return EmployeeRepository.GetEmployee(id)?.Salary;
+		}
 
-			int id = int.Parse(context.Request.RouteValues["id"].ToString());
+		public static string? HandleGetNameById(int id)
+		{
+			return EmployeeRepository.GetEmployee(id)?.Name;
+		}
 
-			Employee employee = EmployeeRepository.GetEmployee(id);
-
-			if(employee is not null)
-			{
-				await context.Response.WriteAsync($"{employee.Salary}<br/>");
-			}
-			else
-			{
-				context.Response.StatusCode = 404;
-				await context.Response.WriteAsync("Employee not found.");
-			}
+		public static string? HandleHelloFromEmployee(int id)
+		{
+			return $"Hello from { EmployeeRepository.GetEmployee(id)?.Name }";
 		}
 
 		public static async Task HandlePut(HttpContext context)
