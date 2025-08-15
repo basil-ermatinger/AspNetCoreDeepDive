@@ -18,6 +18,11 @@ app.MapGet("/employees/{id:int?}", ([FromRoute] int? id) =>
 	return id.HasValue ? EmployeeRequestHandler.HandleGetEmployeeById(id.Value) : EmployeeRequestHandler.HandleGetEmployees(1);
 });
 
+app.MapGet("/employees/", ([FromHeader(Name = "identity")] int id) =>
+{
+	return EmployeeRequestHandler.HandleGetEmployeeById(id);
+});
+
 // e.g. http://localhost:5074/employees/position/1
 app.MapGet("/employees/position/{id}", ([FromRoute(Name = "id")] int? identityNumber) =>
 {
