@@ -1,4 +1,5 @@
 using _05_MinimalApi_ModelBindingModelValidation.Modules.Employees.Handlers;
+using _05_MinimalApi_ModelBindingModelValidation.Modules.Employees.Models;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -12,39 +13,58 @@ app.MapPost("/employees", async (HttpContext context) =>
 	await EmployeeRequestHandler.HandlePost(context);
 });
 
+// Bind router parameters
 // e.g. http://localhost:5074/employees/1
 app.MapGet("/employees/{id:int?}", ([FromRoute] int? id) =>
 {
 	return id.HasValue ? EmployeeRequestHandler.HandleGetEmployeeById(id.Value) : EmployeeRequestHandler.HandleGetEmployees(1);
 });
 
+// Bind Headers
+// e.g. /employees/ (also specify header with "key = identity" and "value = 1" in Postman)
 app.MapGet("/employees/", ([FromHeader(Name = "identity")] int id) =>
 {
 	return EmployeeRequestHandler.HandleGetEmployeeById(id);
 });
 
+// Bind route parameters with self declared name of parameter
 // e.g. http://localhost:5074/employees/position/1
 app.MapGet("/employees/position/{id}", ([FromRoute(Name = "id")] int? identityNumber) =>
 {
 	return identityNumber.HasValue ? EmployeeRequestHandler.HandleGetPositionById(identityNumber.Value) : null;
 });
 
+// Bind route parameters without using [FromRoute]
 // e.g. http://localhost:5074/employees/salary/1
 app.MapGet("/employees/salary/{id}", (int? id) =>
 {
 	return id.HasValue ? EmployeeRequestHandler.HandleGetSalaryById(id.Value) : null;
 });
 
+// Bind parameters from query string
 // e.g. http://localhost:5074/employees/name?id=1
 app.MapGet("/employees/name", (int? id) =>
 {
 	return id.HasValue ? EmployeeRequestHandler.HandleGetNameById(id.Value) : null;
 });
 
+// Bind parameters from query string with self declared name of parameter
 // e.g. http://localhost:5074/employees/helloFromEmployee?id=1
 app.MapGet("/employees/helloFromEmployee", ([FromQuery(Name = "id")] int? identityNumber) =>
 {
 	return identityNumber.HasValue ? EmployeeRequestHandler.HandleHelloFromEmployee(identityNumber.Value) : null;
+});
+
+// Bind multiple parameters as grouped parameters
+// e.g. /employees/get-and-change/1?name=Basil (also specify header with "key = position" and "value = Developer" in Postman)
+app.MapGet("/employees/get-and-change/{id:int}", ([AsParameters] GetEmployeeParameters param) =>
+{
+	var employee = EmployeeRequestHandler.HandleGetEmployeeById(param.Id);
+
+	employee.Name = param.Name;
+	employee.Position = param.Position;
+
+	return employee;
 });
 
 app.MapPut("/employees", async (HttpContext context) =>
