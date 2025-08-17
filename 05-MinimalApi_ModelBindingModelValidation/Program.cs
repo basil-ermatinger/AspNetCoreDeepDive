@@ -17,7 +17,7 @@ app.MapPost("/employees", async (HttpContext context) =>
 // e.g. http://localhost:5074/employees/1
 app.MapGet("/employees/{id:int?}", ([FromRoute] int? id) =>
 {
-	return id.HasValue ? EmployeeRequestHandler.HandleGetEmployeeById(id.Value) : EmployeeRequestHandler.HandleGetEmployees(1);
+	return id.HasValue ? EmployeeRequestHandler.HandleGetEmployeeById(id.Value) : EmployeeRequestHandler.HandleGetEmployee(1);
 });
 
 // Bind Headers
@@ -59,12 +59,26 @@ app.MapGet("/employees/helloFromEmployee", ([FromQuery(Name = "id")] int? identi
 // e.g. /employees/get-and-change/1?name=Basil (also specify header with "key = position" and "value = Developer" in Postman)
 app.MapGet("/employees/get-and-change/{id:int}", ([AsParameters] GetEmployeeParameters param) =>
 {
-	var employee = EmployeeRequestHandler.HandleGetEmployeeById(param.Id);
+	Employee? employee = EmployeeRequestHandler.HandleGetEmployeeById(param.Id);
 
 	employee.Name = param.Name;
 	employee.Position = param.Position;
 
 	return employee;
+});
+
+// Bind arrays to query parameters
+// e.g. /employees/byIdsQuery?id=1&id=2
+app.MapGet("/employees/byIdsQuery", ([FromQuery(Name = "id")] int[] ids) =>
+{
+	return EmployeeRequestHandler.HandleGetEmployeesByIds(ids);
+});
+
+// Bind arrays to header parameters
+// e.g. /employees/byIdsHeader (also specify header with one or more id key/value pairs in postman (e.g. id = 1 / id = 2)
+app.MapGet("/employees/byIdsHeader", ([FromHeader(Name = "id")] int[] ids) =>
+{
+	return EmployeeRequestHandler.HandleGetEmployeesByIds(ids);
 });
 
 app.MapPut("/employees", async (HttpContext context) =>

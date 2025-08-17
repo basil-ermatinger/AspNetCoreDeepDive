@@ -34,7 +34,12 @@ namespace _05_MinimalApi_ModelBindingModelValidation.Modules.Employees.Handlers
 			}
 		}
 
-		public static Employee? HandleGetEmployees(int id)
+		public static List<Employee> HandleGetEmployeesByIds(int[] ids)
+		{
+			return EmployeeRepository.GetEmployees().Where(e => ids.Contains(e.Id)).ToList();
+		}
+
+		public static Employee? HandleGetEmployee(int id)
 		{
 			return HandleGetEmployeeById(id);
 		}
