@@ -8,11 +8,6 @@ var app = builder.Build();
 
 app.UseRouting();
 
-app.MapPost("/employees", async (HttpContext context) =>
-{
-	await EmployeeRequestHandler.HandlePost(context);
-});
-
 // Bind router parameters
 // e.g. http://localhost:5074/employees/1
 app.MapGet("/employees/{id:int?}", ([FromRoute] int? id) =>
@@ -79,6 +74,16 @@ app.MapGet("/employees/byIdsQuery", ([FromQuery(Name = "id")] int[] ids) =>
 app.MapGet("/employees/byIdsHeader", ([FromHeader(Name = "id")] int[] ids) =>
 {
 	return EmployeeRequestHandler.HandleGetEmployeesByIds(ids);
+});
+
+app.MapGet("/", () =>
+{
+	return "Hello World";
+});
+
+app.MapPost("/employees", (Employee employee) =>
+{
+	return EmployeeRequestHandler.HandlePost(employee);
 });
 
 app.MapPut("/employees", async (HttpContext context) =>

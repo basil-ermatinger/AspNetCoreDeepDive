@@ -6,34 +6,6 @@ namespace _05_MinimalApi_ModelBindingModelValidation.Modules.Employees.Handlers
 {
 	public static class EmployeeRequestHandler
 	{
-		public static async Task HandlePost(HttpContext context)
-		{
-			using StreamReader reader = new StreamReader(context.Request.Body);
-			string body = await reader.ReadToEndAsync();
-
-			try
-			{
-				Employee employee = JsonSerializer.Deserialize<Employee>(body)!;
-
-				if(employee is null || employee.Id <= 0)
-				{
-					context.Response.StatusCode = 400;
-					return;
-				}
-
-				EmployeeRepository.AddEmployee(employee);
-
-				context.Response.StatusCode = 201;
-				await context.Response.WriteAsync("Employee added successfully");
-			}
-			catch(Exception ex)
-			{
-				context.Response.StatusCode = 400;
-				await context.Response.WriteAsync(ex.ToString());
-				return;
-			}
-		}
-
 		public static List<Employee> HandleGetEmployeesByIds(int[] ids)
 		{
 			return EmployeeRepository.GetEmployees().Where(e => ids.Contains(e.Id)).ToList();
@@ -66,7 +38,19 @@ namespace _05_MinimalApi_ModelBindingModelValidation.Modules.Employees.Handlers
 
 		public static string? HandleHelloFromEmployee(int id)
 		{
-			return $"Hello from { EmployeeRepository.GetEmployee(id)?.Name }";
+			return $"Hello from {EmployeeRepository.GetEmployee(id)?.Name}";
+		}
+
+		public static string HandlePost(Employee employee)
+		{
+			if(employee is null || employee.Id <= 0)
+			{
+				return "Employee is not provided or is not valid"; ;
+			}
+
+			EmployeeRepository.AddEmployee(employee);
+
+			return ("Employee added successfully");
 		}
 
 		public static async Task HandlePut(HttpContext context)
