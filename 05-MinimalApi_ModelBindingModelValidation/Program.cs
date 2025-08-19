@@ -76,11 +76,26 @@ app.MapGet("/employees/byIdsHeader", ([FromHeader(Name = "id")] int[] ids) =>
 	return EmployeeRequestHandler.HandleGetEmployeesByIds(ids);
 });
 
+// Custom binding with BuildAsync method
+// e.g. /persons?id=1 (also specify header with key/value pair "name = basil"
+app.MapGet("persons", (Person? person) =>
+{
+	return $"Id is {person?.Id}; Name is {person?.Name}";
+});
+
 app.MapGet("/", () =>
 {
 	return "Hello World";
 });
 
+// Bind to HTTP body
+// e.g. /employees (also specify body in postman like 
+// {
+//    "Id": 4,
+//    "Name": "Roberto Blanko",
+//    "Position": "Alleinunterhalter",
+//    "Salary": 100
+// }
 app.MapPost("/employees", (Employee employee) =>
 {
 	return EmployeeRequestHandler.HandlePost(employee);
