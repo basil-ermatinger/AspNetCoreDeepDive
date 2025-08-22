@@ -7,8 +7,8 @@
 
 		public static ValueTask<Person?> BindAsync(HttpContext context)
 		{
-			string idStr = context.Request.Query["id"];
-			string nameStr = context.Request.Headers["name"];
+			string? idStr = context.Request.Query["id"];
+			string? nameStr = context.Request.Headers["name"];
 
 			if(int.TryParse(idStr, out var id))
 			{

@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment-04-RoutingWithCr
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-MinimalApi_ModelBindingModelValidation", "05-MinimalApi_ModelBindingModelValidation\05-MinimalApi_ModelBindingModelValidation.csproj", "{832A33D2-2659-4776-B570-4C87A29454B8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-ModelValidation", "06-ModelValidation\06-ModelValidation.csproj", "{5A4DAC78-0078-4A4B-8897-1E4461A0A010}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{832A33D2-2659-4776-B570-4C87A29454B8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{832A33D2-2659-4776-B570-4C87A29454B8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{832A33D2-2659-4776-B570-4C87A29454B8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5A4DAC78-0078-4A4B-8897-1E4461A0A010}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5A4DAC78-0078-4A4B-8897-1E4461A0A010}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5A4DAC78-0078-4A4B-8897-1E4461A0A010}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5A4DAC78-0078-4A4B-8897-1E4461A0A010}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
