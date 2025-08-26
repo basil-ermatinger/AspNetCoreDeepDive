@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using _06_ModelValidation.Modules.Employees.Validation;
+using System.ComponentModel.DataAnnotations;
 
 namespace _06_MinimalApi_ModelValidation.Modules.Employees.Models
 {
@@ -8,10 +9,13 @@ namespace _06_MinimalApi_ModelValidation.Modules.Employees.Models
 
 		[Required]
 		public string Name { get; set; }
+
+		[Required]
 		public string Position { get; set; }
 
 		[Required]
 		[Range(50000, 200000)]
+		[EmployeeEnsureSalary]
 		public double Salary { get; set; }
 
 		public Employee(int id, string name, string position, double salary)
