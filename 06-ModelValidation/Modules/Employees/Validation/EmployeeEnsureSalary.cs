@@ -7,7 +7,7 @@ namespace _06_ModelValidation.Modules.Employees.Validation
 	{
 		protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
 		{
-			Employee employee = validationContext.ObjectInstance as Employee;
+			Employee? employee = validationContext.ObjectInstance as Employee;
 
 			if(employee is not null && !string.IsNullOrWhiteSpace(employee.Position) && employee.Position.Equals("Manager", StringComparison.OrdinalIgnoreCase))
 			{
