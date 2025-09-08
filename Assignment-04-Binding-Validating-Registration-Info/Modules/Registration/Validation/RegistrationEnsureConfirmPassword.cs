@@ -18,5 +18,5 @@ namespace Assignment_04_Binding_Validating_Registration_Info.Modules.Registratio
 
 			return ValidationResult.Success;
 		}
-	}
+	}  
 }

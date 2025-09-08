@@ -3,21 +3,23 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.14.36221.1
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "01-HttpProtocolAndHttpContext", "01-HttpProtocolAndHttpContext\01-HttpProtocolAndHttpContext.csproj", "{0C966489-00B8-4283-BBD4-4437B7CA6DD1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-HttpProtocolAndHttpContext", "01-HttpProtocolAndHttpContext\02-HttpProtocolAndHttpContext.csproj", "{0C966489-00B8-4283-BBD4-4437B7CA6DD1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "02-MiddlewarePipeline", "02-MiddlewarePipeline\02-MiddlewarePipeline.csproj", "{B6F5D825-3795-426D-9E5B-E7E9551FDA0A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-01-MiddlewarePipeline", "02-MiddlewarePipeline\03-01-MiddlewarePipeline.csproj", "{B6F5D825-3795-426D-9E5B-E7E9551FDA0A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-CustomMiddlewareClass", "03-CustomMiddlewareClass\03-CustomMiddlewareClass.csproj", "{38E69C77-F4E4-4A1F-BA81-D22426FC0313}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "03-02-CustomMiddlewareClass", "03-CustomMiddlewareClass\03-02-CustomMiddlewareClass.csproj", "{38E69C77-F4E4-4A1F-BA81-D22426FC0313}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-MinimalApi_LearnRouting", "04-LearnRouting\04-MinimalApi_LearnRouting.csproj", "{4535879E-EFB1-4368-9DAE-57635F8BC2A1}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "04-01-MinimalApi_LearnRouting", "04-LearnRouting\04-01-MinimalApi_LearnRouting.csproj", "{4535879E-EFB1-4368-9DAE-57635F8BC2A1}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment-03-RoutingWithCrud", "Assignment-04-RoutingWithCrud\Assignment-03-RoutingWithCrud.csproj", "{103B34C8-C844-48E1-B81A-427622C8C8EC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-MinimalApi_ModelBindingModelValidation", "05-MinimalApi_ModelBindingModelValidation\05-MinimalApi_ModelBindingModelValidation.csproj", "{832A33D2-2659-4776-B570-4C87A29454B8}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-01-MinimalApi_ModelBindingModelValidation", "05-MinimalApi_ModelBindingModelValidation\05-01-MinimalApi_ModelBindingModelValidation.csproj", "{832A33D2-2659-4776-B570-4C87A29454B8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-ModelValidation", "06-ModelValidation\06-ModelValidation.csproj", "{5A4DAC78-0078-4A4B-8897-1E4461A0A010}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-02-ModelValidation", "06-ModelValidation\05-02-ModelValidation.csproj", "{5A4DAC78-0078-4A4B-8897-1E4461A0A010}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment-04-Binding-Validating-Registration-Info", "Assignment-04-Binding-Validating-Registration-Info\Assignment-04-Binding-Validating-Registration-Info.csproj", "{6AC57274-A0B9-4D49-BBA3-2BC273086760}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-MinimalApi_Results", "05-MinimalApi_Results\05-MinimalApi_Results.csproj", "{B1418F68-AC0C-4C1F-8A04-AC2EB7BC9180}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -57,6 +59,10 @@ Global
 		{6AC57274-A0B9-4D49-BBA3-2BC273086760}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6AC57274-A0B9-4D49-BBA3-2BC273086760}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6AC57274-A0B9-4D49-BBA3-2BC273086760}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1418F68-AC0C-4C1F-8A04-AC2EB7BC9180}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1418F68-AC0C-4C1F-8A04-AC2EB7BC9180}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1418F68-AC0C-4C1F-8A04-AC2EB7BC9180}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1418F68-AC0C-4C1F-8A04-AC2EB7BC9180}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
