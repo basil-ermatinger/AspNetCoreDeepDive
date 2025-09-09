@@ -20,6 +20,8 @@
 		{
 			if(employee is not null)
 			{
+				int maxId = employees.Max(x => x.Id);
+				employee.Id = maxId + 1;
 				employees.Add(employee);
 			}
 		}
