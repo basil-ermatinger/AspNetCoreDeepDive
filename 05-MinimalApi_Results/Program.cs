@@ -14,12 +14,15 @@ app.MapGet("/employees", () =>
 
 app.MapPost("/employees", (Employee employee) =>
 {
-	if(employee is null)
+	if(employee.Name == null) 
 	{
-		return Results.BadRequest("Employee is not provided or is not valid.");
+		return Results.ValidationProblem(new Dictionary<string, string[]>
+		{
+			{ "position", new[] { "Name is not set" } }
+		});
 	}
 
-	EmployeesRepository.AddEmployee(employee);
+		EmployeesRepository.AddEmployee(employee);
 	return TypedResults.Created($"/employees/{employee.Id}", employee);
 }).WithParameterValidation();
 
