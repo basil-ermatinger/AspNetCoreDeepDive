@@ -1,4 +1,5 @@
 using _05_MinimalApi_Results.Models;
+using _05_MinimalApi_Results.Results;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,7 +14,12 @@ if(!app.Environment.IsDevelopment())
 
 app.UseStatusCodePages();
 
-app.MapGet("/", () => "Hello World!");
+app.MapGet("/", HtmlResult () => 
+{
+	string html = "<h2>Welcome to our API</h2> Our API is used to learn ASP.NET CORE.";
+
+	return new HtmlResult(html);
+});
 
 app.MapGet("/employees", () =>
 {
@@ -32,7 +38,7 @@ app.MapPost("/employees", (Employee employee) =>
 		});
 	}
 
-		EmployeesRepository.AddEmployee(employee);
+	EmployeesRepository.AddEmployee(employee);
 	return TypedResults.Created($"/employees/{employee.Id}", employee);
 }).WithParameterValidation();
 
