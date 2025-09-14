@@ -1,9 +1,8 @@
-﻿
-using System.Text;
+﻿using System.Text;
 
-namespace _05_MinimalApi_Results.Results
+namespace Assignment_05_ImplementCrudForEmployees.Result
 {
-	public class HtmlResult : IResult
+	public class HtmlResult: IResult
 	{
 		private readonly string _html;
 
