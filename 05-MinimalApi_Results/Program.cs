@@ -1,5 +1,5 @@
-using _05_MinimalApi_Results.Models;
-using _05_MinimalApi_Results.Results;
+using _06_MinimalApi_Results.Models;
+using _06_MinimalApi_Results.Results;
 
 var builder = WebApplication.CreateBuilder(args);
 

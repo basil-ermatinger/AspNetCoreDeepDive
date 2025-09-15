@@ -19,7 +19,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-02-ModelValidation", "06
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment-04-Binding-Validating-Registration-Info", "Assignment-04-Binding-Validating-Registration-Info\Assignment-04-Binding-Validating-Registration-Info.csproj", "{6AC57274-A0B9-4D49-BBA3-2BC273086760}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "05-MinimalApi_Results", "05-MinimalApi_Results\05-MinimalApi_Results.csproj", "{B1418F68-AC0C-4C1F-8A04-AC2EB7BC9180}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "06-MinimalApi_Results", "05-MinimalApi_Results\06-MinimalApi_Results.csproj", "{B1418F68-AC0C-4C1F-8A04-AC2EB7BC9180}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment_05_ImplementCrudForEmployees", "Assignment_05_ImplementCrudForEmployees\Assignment_05_ImplementCrudForEmployees.csproj", "{AB5A4DB5-2AF4-4F78-B6B4-0781F0530D85}"
 EndProject

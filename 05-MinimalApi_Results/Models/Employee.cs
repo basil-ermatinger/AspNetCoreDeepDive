@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace _05_MinimalApi_Results.Models
+namespace _06_MinimalApi_Results.Models
 {
 	public class Employee
 	{

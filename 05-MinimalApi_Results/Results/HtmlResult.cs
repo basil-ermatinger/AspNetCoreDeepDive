@@ -1,7 +1,7 @@
 ﻿
 using System.Text;
 
-namespace _05_MinimalApi_Results.Results
+namespace _06_MinimalApi_Results.Results
 {
 	public class HtmlResult : IResult
 	{
