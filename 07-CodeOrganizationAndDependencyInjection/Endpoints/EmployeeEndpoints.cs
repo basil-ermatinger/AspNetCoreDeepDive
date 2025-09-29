@@ -15,16 +15,16 @@ namespace _07_CodeOrganizationAndDependencyInjection.Endpoints
 				return new HtmlResult(html);
 			});
 
-			app.MapGet("/employees", () =>
+			app.MapGet("/employees", (IEmployeesRepository employeesRepository) =>
 			{
-				List<Employee> employees = EmployeesRepository.GetEmployees();
+				List<Employee> employees = employeesRepository.GetEmployees();
 
 				return TypedResults.Ok(employees);
 			});
 
-			app.MapGet("/employees/{id:int}", ([FromRoute] int id) =>
+			app.MapGet("/employees/{id:int}", ([FromRoute] int id, IEmployeesRepository employeesRepository) =>
 			{
-				Employee? employee = EmployeesRepository.GetEmployeeById(id);
+				Employee? employee = employeesRepository.GetEmployeeById(id);
 
 				return employee is not null
 					? TypedResults.Ok(employee)
@@ -35,7 +35,7 @@ namespace _07_CodeOrganizationAndDependencyInjection.Endpoints
 					statusCode: 404);
 			});
 
-			app.MapPost("/employees", (Employee employee) =>
+			app.MapPost("/employees", (Employee employee, IEmployeesRepository employeesRepository) =>
 			{
 				if(employee is null || employee.Id < 0)
 				{
@@ -46,11 +46,11 @@ namespace _07_CodeOrganizationAndDependencyInjection.Endpoints
 					statusCode: 400);
 				}
 
-				EmployeesRepository.AddEmployee(employee);
+				employeesRepository.AddEmployee(employee);
 				return TypedResults.Created($"/employees/{employee.Id}", employee);
 			}).WithParameterValidation();
 
-			app.MapPut("/employees/{id:int}", ([FromRoute] int id, Employee employee) =>
+			app.MapPut("/employees/{id:int}", ([FromRoute] int id, Employee employee, IEmployeesRepository employeesRepository) =>
 			{
 				if(id != employee.Id)
 				{
@@ -60,7 +60,7 @@ namespace _07_CodeOrganizationAndDependencyInjection.Endpoints
 					});
 				}
 
-				return EmployeesRepository.UpdateEmployee(employee)
+				return employeesRepository.UpdateEmployee(employee)
 					? TypedResults.NoContent()
 					: Microsoft.AspNetCore.Http.Results.ValidationProblem(new Dictionary<string, string[]>
 					{
@@ -69,11 +69,11 @@ namespace _07_CodeOrganizationAndDependencyInjection.Endpoints
 					statusCode: 404);
 			});
 
-			app.MapDelete("/employees/{id:int}", ([FromRoute] int id) =>
+			app.MapDelete("/employees/{id:int}", ([FromRoute] int id, IEmployeesRepository employeesRepository) =>
 			{
-				Employee? employee = EmployeesRepository.GetEmployeeById(id);
+				Employee? employee = employeesRepository.GetEmployeeById(id);
 
-				return EmployeesRepository.DeleteEmployee(employee)
+				return employeesRepository.DeleteEmployee(employee)
 					? TypedResults.Ok(employee)
 					: Microsoft.AspNetCore.Http.Results.ValidationProblem(new Dictionary<string, string[]>
 					{

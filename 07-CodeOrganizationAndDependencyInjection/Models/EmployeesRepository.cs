@@ -1,22 +1,22 @@
 ﻿namespace _07_CodeOrganizationAndDependencyInjection.Models
 {
-	public class EmployeesRepository
+	public class EmployeesRepository : IEmployeesRepository
 	{
-		private static List<Employee> employees = new List<Employee>
+		private List<Employee> employees = new List<Employee>
 		{
 			new Employee(1, "John Doe", "Engineer", 60000),
 			new Employee(2, "Jane Smith", "Manager", 75000),
 			new Employee(3, "Sam Brown", "Technician", 50000)
 		};
 
-		public static List<Employee> GetEmployees() => employees;
+		public List<Employee> GetEmployees() => employees;
 
-		public static Employee? GetEmployeeById(int id)
+		public Employee? GetEmployeeById(int id)
 		{
 			return employees.FirstOrDefault(x => x.Id == id);
 		}
 
-		public static void AddEmployee(Employee? employee)
+		public void AddEmployee(Employee? employee)
 		{
 			if(employee is not null)
 			{
@@ -26,7 +26,7 @@
 			}
 		}
 
-		public static bool UpdateEmployee(Employee? employee)
+		public bool UpdateEmployee(Employee? employee)
 		{
 			if(employee is not null)
 			{
@@ -45,7 +45,7 @@
 			return false;
 		}
 
-		public static bool DeleteEmployee(Employee? employee)
+		public bool DeleteEmployee(Employee? employee)
 		{
 			if(employee is not null)
 			{
