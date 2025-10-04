@@ -5,7 +5,7 @@ WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddProblemDetails();
 
-builder.Services.AddTransient<IEmployeesRepository, EmployeesRepository>();
+builder.Services.AddSingleton<IEmployeesRepository, EmployeesRepository>();
 
 WebApplication app = builder.Build();
 
