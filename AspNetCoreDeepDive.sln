@@ -25,6 +25,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assignment-05_ImplementCrud
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "07-CodeOrganizationAndDependencyInjection", "07-CodeOrganizationAndDependencyInjection\07-CodeOrganizationAndDependencyInjection.csproj", "{9A26DEA0-5202-47EC-9670-B4BAA9016658}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "08-MvcControllersRouting", "08_MvcControllersRouting\08-MvcControllersRouting.csproj", "{478C04A6-38A1-4B09-B266-A311F1E842F5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -75,6 +77,10 @@ Global
 		{9A26DEA0-5202-47EC-9670-B4BAA9016658}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A26DEA0-5202-47EC-9670-B4BAA9016658}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A26DEA0-5202-47EC-9670-B4BAA9016658}.Release|Any CPU.Build.0 = Release|Any CPU
+		{478C04A6-38A1-4B09-B266-A311F1E842F5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{478C04A6-38A1-4B09-B266-A311F1E842F5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{478C04A6-38A1-4B09-B266-A311F1E842F5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{478C04A6-38A1-4B09-B266-A311F1E842F5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
