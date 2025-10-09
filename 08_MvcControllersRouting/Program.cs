@@ -1,6 +1,11 @@
-var builder = WebApplication.CreateBuilder(args);
-var app = builder.Build();
+WebApplicationBuilder builder = WebApplication.CreateBuilder(args);
 
-app.MapGet("/", () => "Hello World!");
+builder.Services.AddControllers();
+
+WebApplication app = builder.Build();
+
+app.UseRouting();
+
+app.MapControllers();
 
 app.Run();
